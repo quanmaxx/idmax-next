@@ -1,0 +1,32 @@
+:root {
+  --page-bg: #e5e6e7;
+  --header-bg: #231f20;
+  --footer-bg: #d0d2d3;
+  --text: #050505;
+  --muted: #4c4c4c;
+  --line: rgba(0, 0, 0, 0.09);
+  --container: 1717px;
+  --gutter: 102px;
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --header-height: 69px;
+  --project-gap: 12px;
+}
+
+@media (max-width: 1440px) {
+  :root {
+    --gutter: 76px;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --gutter: 32px;
+    --header-height: 64px;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --gutter: 20px;
+  }
+}
