@@ -4,15 +4,24 @@ import { projects } from '@/data/projects';
 import { site } from '@/data/site';
 
 export const metadata: Metadata = {
-  title: 'Work Listing',
-  description: 'Danh sách dự án thiết kế logo và hình ảnh thương hiệu được thực hiện bởi IDMAX.',
+  title: 'IDMAX — Logo Expert',
+  description:
+    'IDMAX là studio thiết kế logo chuyên sâu dành cho doanh nghiệp muốn xây dựng hình ảnh thương hiệu rõ ràng, khác biệt và dễ ghi nhớ.',
   alternates: { canonical: site.url },
   openGraph: {
-    title: 'IDMAX Work',
-    description: 'Danh sách dự án thiết kế logo và hình ảnh thương hiệu được thực hiện bởi IDMAX.',
+    title: 'IDMAX — Logo Expert',
+    description:
+      'IDMAX là studio thiết kế logo chuyên sâu dành cho doanh nghiệp muốn xây dựng hình ảnh thương hiệu rõ ràng, khác biệt và dễ ghi nhớ.',
     url: site.url,
-    images: [{ url: '/assets/images/projects/tuart-wedding-thumb.webp', width: 1448, height: 1354, alt: 'IDMAX work listing' }]
-  }
+    images: [
+      {
+        url: '/assets/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'IDMAX Logo Expert',
+      },
+    ],
+  },
 };
 
 export default function HomePage() {
