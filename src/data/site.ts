@@ -14,7 +14,7 @@ export const site = {
     { label: 'instagram', href: '#' }
   ],
   nav: [
-    { label: 'work', href: '/' },
+    { label: 'work', href: '/work' },
     { label: 'about', href: '/about' },
     { label: 'news', href: '/news' },
     { label: 'contact', href: '/contact' }

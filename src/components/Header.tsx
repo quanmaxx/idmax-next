@@ -9,12 +9,12 @@ export function Header() {
   const pathname = usePathname();
 
   const isActive = (href: string) => {
-    if (href === '/') {
-      return pathname === '/' || pathname.startsWith('/work');
-    }
+  if (href === '/') {
+    return pathname === '/';
+  }
 
-    return pathname === href || pathname.startsWith(`${href}/`);
-  };
+  return pathname === href || pathname.startsWith(`${href}/`);
+};
 
   return (
     <header className="site-header" aria-label="Site header">
