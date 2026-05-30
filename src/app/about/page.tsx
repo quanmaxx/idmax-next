@@ -38,19 +38,19 @@ export default function AboutPage() {
       <AboutReveal />
 
       <section className="about-intro">
-        <div className="about-intro-grid">
-          <h1 className="about-intro-title" data-about-reveal="left">
-            <span>IDMAX LÀ ĐƠN VỊ DUY NHẤT TẠI</span>
-            <span>VIỆT NAM LỰA CHỌN TẬP TRUNG</span>
-            <span className="wide-line">CHUYÊN SÂU VÀO LĨNH VỰC</span>
-            <span>THIẾT KẾ LOGO THƯƠNG HIỆU</span>
-          </h1>
+  <div className="about-intro-grid">
+    <h1 className="about-intro-title" data-about-reveal="left">
+      <span>IDMAX LÀ ĐƠN VỊ DUY NHẤT TẠI</span>
+      <span>VIỆT NAM LỰA CHỌN TẬP TRUNG</span>
+      <span className="wide-line">CHUYÊN SÂU VÀO LĨNH VỰC</span>
+      <span>THIẾT KẾ LOGO THƯƠNG HIỆU</span>
+    </h1>
 
-          <p className="about-intro-desc" data-about-reveal="right">
-            Chúng tôi chấp nhận việc loại bỏ bớt nhiều công việc gây sao nhãng khác để tập trung toàn bộ nguồn lực vào nghiên cứu, lý giải, thử nghiệm và tìm kiếm những giải pháp tối ưu nhất để nâng tầm thiết kế Logo lên mức tiêu chuẩn vượt trội trong ngành.
-          </p>
-        </div>
-      </section>
+    <p className="about-intro-desc" data-about-reveal="right">
+      Chúng tôi chấp nhận việc loại bỏ bớt nhiều công việc gây sao nhãng khác để tập trung toàn bộ nguồn lực vào nghiên cứu, lý giải, thử nghiệm và tìm kiếm những giải pháp tối ưu nhất để nâng tầm thiết kế Logo lên mức tiêu chuẩn vượt trội trong ngành.
+    </p>
+  </div>
+</section>
 
       <section className="turning-section">
         <Image

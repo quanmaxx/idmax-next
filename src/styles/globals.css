@@ -3347,3 +3347,137 @@ body {
     font-size: 20px;
   }
 }
+
+/* =========================================================
+   IDMAX ABOUT INTRO - NON PC SAFE FIX
+   Fix laptop overlap + mobile clipping
+   Does not affect large PC >= 1800px
+========================================================= */
+
+@media (min-width: 1025px) and (max-width: 1799px) {
+  .about-intro {
+    padding: 96px 0 112px !important;
+    overflow: hidden !important;
+  }
+
+  .about-intro-grid {
+    width: min(1100px, calc(100vw - 160px)) !important;
+    max-width: min(1100px, calc(100vw - 160px)) !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .about-intro-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    font-size: clamp(38px, 4.2vw, 56px) !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.03em !important;
+    text-align: left !important;
+    text-align-last: left !important;
+    word-spacing: normal !important;
+  }
+
+  .about-intro-title span,
+  .about-intro-title .wide-line {
+    display: inline !important;
+    white-space: normal !important;
+    word-spacing: normal !important;
+  }
+
+  .about-intro-desc {
+    width: 100% !important;
+    max-width: 720px !important;
+    margin: 42px 0 0 auto !important;
+    font-size: clamp(18px, 1.55vw, 23px) !important;
+    line-height: 1.48 !important;
+    text-align: left !important;
+    text-align-last: left !important;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1024px) {
+  .about-intro {
+    padding: 82px 0 96px !important;
+    overflow: hidden !important;
+  }
+
+  .about-intro-grid {
+    width: calc(100vw - 120px) !important;
+    max-width: calc(100vw - 120px) !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .about-intro-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    font-size: clamp(34px, 5.6vw, 50px) !important;
+    line-height: 1.18 !important;
+    text-align: left !important;
+    text-align-last: left !important;
+    word-spacing: normal !important;
+  }
+
+  .about-intro-title span,
+  .about-intro-title .wide-line {
+    display: inline !important;
+    white-space: normal !important;
+    word-spacing: normal !important;
+  }
+
+  .about-intro-desc {
+    width: 100% !important;
+    max-width: 640px !important;
+    margin: 36px 0 0 !important;
+    font-size: 19px !important;
+    line-height: 1.5 !important;
+    text-align: left !important;
+    text-align-last: left !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .about-intro {
+    padding: 54px 0 70px !important;
+    overflow: hidden !important;
+  }
+
+  .about-intro-grid {
+    width: calc(100vw - 56px) !important;
+    max-width: calc(100vw - 56px) !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .about-intro-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    font-size: clamp(25px, 6.6vw, 32px) !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.035em !important;
+    text-align: left !important;
+    text-align-last: left !important;
+    word-spacing: normal !important;
+  }
+
+  .about-intro-title span,
+  .about-intro-title .wide-line {
+    display: inline !important;
+    white-space: normal !important;
+    word-spacing: normal !important;
+  }
+
+  .about-intro-desc {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 30px 0 0 !important;
+    font-size: 15.5px !important;
+    line-height: 1.52 !important;
+    text-align: left !important;
+    text-align-last: left !important;
+  }
+}
