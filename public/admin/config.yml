@@ -1,4 +1,5 @@
 local_backend: false
+
 backend:
   name: git-gateway
   branch: main
@@ -9,13 +10,142 @@ public_folder: "/uploads"
 collections:
   - name: "news"
     label: "News"
+    label_singular: "News Article"
     folder: "content/news"
     create: true
     slug: "{{slug}}"
+    summary: "{{title}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", required: false }
       - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Thumbnail", name: "thumbnail", widget: "image" }
-      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Category", name: "category", widget: "string", required: false }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
+      - { label: "SEO Title", name: "seo_title", widget: "string", required: false }
+      - { label: "SEO Description", name: "seo_description", widget: "text", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "work"
+    label: "Projects"
+    label_singular: "Project"
+    folder: "content/work"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: "Project Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", required: false }
+      - { label: "Client", name: "client", widget: "string", required: false }
+      - { label: "Year", name: "year", widget: "string", required: false }
+      - { label: "Category", name: "category", widget: "string", required: false }
+      - { label: "Industry", name: "industry", widget: "string", required: false }
+      - { label: "Service", name: "service", widget: "string", required: false }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
+      - { label: "Cover Image", name: "cover", widget: "image", required: false }
+      - { label: "Short Description", name: "description", widget: "text", required: false }
+      - label: "Project Gallery"
+        name: "gallery"
+        widget: "list"
+        required: false
+        field:
+          label: "Image"
+          name: "image"
+          widget: "image"
+      - { label: "SEO Title", name: "seo_title", widget: "string", required: false }
+      - { label: "SEO Description", name: "seo_description", widget: "text", required: false }
+      - { label: "Content", name: "body", widget: "markdown", required: false }
+
+  - name: "clients"
+    label: "Clients"
+    label_singular: "Client"
+    folder: "content/clients"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{name}}"
+    fields:
+      - { label: "Client Name", name: "name", widget: "string" }
+      - { label: "Logo", name: "logo", widget: "image", required: false }
+      - { label: "Industry", name: "industry", widget: "string", required: false }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - { label: "Order", name: "order", widget: "number", required: false }
+
+  - name: "testimonials"
+    label: "Testimonials"
+    label_singular: "Testimonial"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{client_name}}"
+    fields:
+      - { label: "Client Name", name: "client_name", widget: "string" }
+      - { label: "Company", name: "company", widget: "string", required: false }
+      - { label: "Avatar", name: "avatar", widget: "image", required: false }
+      - { label: "Quote", name: "quote", widget: "text" }
+      - { label: "Project Link", name: "project_link", widget: "string", required: false }
+      - { label: "Order", name: "order", widget: "number", required: false }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "homepage"
+        label: "Homepage"
+        file: "content/pages/homepage.yml"
+        fields:
+          - { label: "Hero Title", name: "hero_title", widget: "string", required: false }
+          - { label: "Hero Subtitle", name: "hero_subtitle", widget: "text", required: false }
+          - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+          - { label: "Hero Video", name: "hero_video", widget: "file", required: false }
+          - { label: "Intro Title", name: "intro_title", widget: "string", required: false }
+          - { label: "Intro Content", name: "intro_content", widget: "markdown", required: false }
+          - { label: "CTA Text", name: "cta_text", widget: "string", required: false }
+          - { label: "CTA Link", name: "cta_link", widget: "string", required: false }
+          - { label: "SEO Title", name: "seo_title", widget: "string", required: false }
+          - { label: "SEO Description", name: "seo_description", widget: "text", required: false }
+
+      - name: "about"
+        label: "About Page"
+        file: "content/pages/about.yml"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string", required: false }
+          - { label: "Intro", name: "intro", widget: "markdown", required: false }
+          - { label: "Main Image", name: "image", widget: "image", required: false }
+          - { label: "Philosophy Title", name: "philosophy_title", widget: "string", required: false }
+          - { label: "Philosophy Content", name: "philosophy_content", widget: "markdown", required: false }
+          - { label: "SEO Title", name: "seo_title", widget: "string", required: false }
+          - { label: "SEO Description", name: "seo_description", widget: "text", required: false }
+
+      - name: "contact"
+        label: "Contact Page"
+        file: "content/pages/contact.yml"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Email", name: "email", widget: "string", required: false }
+          - { label: "Phone", name: "phone", widget: "string", required: false }
+          - { label: "Address", name: "address", widget: "text", required: false }
+          - { label: "Map Link", name: "map_link", widget: "string", required: false }
+          - { label: "CTA Text", name: "cta_text", widget: "string", required: false }
+          - { label: "SEO Title", name: "seo_title", widget: "string", required: false }
+          - { label: "SEO Description", name: "seo_description", widget: "text", required: false }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "site"
+        label: "General Settings"
+        file: "content/settings/site.yml"
+        fields:
+          - { label: "Site Name", name: "site_name", widget: "string", required: false }
+          - { label: "Logo", name: "logo", widget: "image", required: false }
+          - { label: "Favicon", name: "favicon", widget: "image", required: false }
+          - { label: "Default SEO Title", name: "default_seo_title", widget: "string", required: false }
+          - { label: "Default SEO Description", name: "default_seo_description", widget: "text", required: false }
+          - { label: "Email", name: "email", widget: "string", required: false }
+          - { label: "Phone", name: "phone", widget: "string", required: false }
+          - { label: "Address", name: "address", widget: "text", required: false }
+          - { label: "Facebook", name: "facebook", widget: "string", required: false }
+          - { label: "Instagram", name: "instagram", widget: "string", required: false }
+          - { label: "Youtube", name: "youtube", widget: "string", required: false }
+          - { label: "Zalo", name: "zalo", widget: "string", required: false }
+          - { label: "Copyright Text", name: "copyright", widget: "string", required: false }

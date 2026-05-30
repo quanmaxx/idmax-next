@@ -1,81 +1,101 @@
-import Image from 'next/image';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { NewsCard } from '@/components/NewsCard';
-import { getPost, getRelatedPosts, news } from '@/data/news';
-import { site } from '@/data/site';
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { NewsCard } from "@/components/NewsCard";
+import type { NewsPost } from "@/data/news";
+import { getAllNews, getAllNewsSlugs, getNewsBySlug } from "@/lib/news";
 
-type Props = {
+export async function generateStaticParams() {
+  return getAllNewsSlugs();
+}
+
+export default async function NewsDetailPage({
+  params,
+}: {
   params: Promise<{ slug: string }>;
-};
-
-export function generateStaticParams() {
-  return news.map((post) => ({ slug: post.slug }));
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+}) {
   const { slug } = await params;
-  const post = getPost(slug);
-  if (!post) return {};
-  const url = `${site.url}/news/${post.slug}`;
-  return {
-    title: post.title,
-    description: post.excerpt,
-    alternates: { canonical: url },
-    openGraph: {
-      title: `${post.title} — IDMAX`,
-      description: post.excerpt,
-      url,
-      images: [{ url: post.thumbnail, width: 600, height: 375, alt: post.title }]
-    }
-  };
-}
+  const post = await getNewsBySlug(slug);
 
-export default async function NewsDetailPage({ params }: Props) {
-  const { slug } = await params;
-  const post = getPost(slug);
-  if (!post) notFound();
-  const related = getRelatedPosts(post.relatedPosts);
+  if (!post) {
+    notFound();
+  }
+
+  const categories =
+    post.categories.length > 0
+      ? post.categories
+      : post.category
+      ? [post.category]
+      : ["BRANDING"];
+
+  const relatedPosts = getAllNews()
+    .filter((item) => item.slug !== post.slug && item.thumbnail)
+    .slice(0, 3)
+    .map((item) => ({
+      slug: item.slug,
+      title: item.title,
+      date: item.date,
+      thumbnail: item.thumbnail,
+      categories:
+        item.categories.length > 0
+          ? item.categories
+          : item.category
+          ? [item.category]
+          : ["BRANDING"],
+      excerpt: item.excerpt || "",
+    })) as NewsPost[];
 
   return (
     <main className="news-detail-main">
       <div className="container">
         <h1 className="page-title">NEWS</h1>
+
         <article className="article-wrap">
           <header className="article-header" data-reveal>
             <h2>{post.title}</h2>
+
             <div className="article-meta">
               <time dateTime={post.date}>{post.date}</time>
-              <div className="tag-row">
-                {post.categories.map((category) => (
+
+              <div className="tag-row" aria-label="Categories">
+                {categories.map((category) => (
                   <span key={category}>{category}</span>
                 ))}
               </div>
             </div>
-            <p className="article-excerpt">{post.excerpt}</p>
+
+            {post.excerpt && (
+              <p className="article-excerpt">{post.excerpt}</p>
+            )}
           </header>
 
-          <div className="article-hero-image" data-reveal>
-            <Image src={post.thumbnail} alt={`${post.title} hero image`} fill priority sizes="1360px" />
-          </div>
+          {post.thumbnail && (
+            <div className="article-hero-image" data-reveal>
+              <Image
+                src={post.thumbnail}
+                alt={`${post.title} thumbnail`}
+                fill
+                priority
+                sizes="1360px"
+              />
+            </div>
+          )}
 
-          <div className="article-body" data-reveal>
-            {post.content.map((paragraph) => (
-              <p key={paragraph.slice(0, 50)}>{paragraph}</p>
-            ))}
-          </div>
+          {post.contentHtml && (
+            <section
+              className="article-body"
+              dangerouslySetInnerHTML={{ __html: post.contentHtml || "" }}
+            />
+          )}
 
-         {related.length > 0 && (
-  <section className="related-posts">
-    <h2>BÀI VIẾT LIÊN QUAN</h2>
-
-    <div className="related-posts-list">
-      {related.map((relatedPost) => (
-        <NewsCard key={relatedPost.slug} post={relatedPost} compact />
-      ))}
-    </div>
-  </section>
-)}
+          {relatedPosts.length > 0 && (
+            <section className="related-posts">
+              <div className="related-posts-list">
+                {relatedPosts.map((item) => (
+                  <NewsCard key={item.slug} post={item} compact />
+                ))}
+              </div>
+            </section>
+          )}
         </article>
       </div>
     </main>
