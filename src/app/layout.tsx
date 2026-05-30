@@ -22,7 +22,14 @@ export const metadata: Metadata = {
     description: site.description,
     url: site.url,
     siteName: site.name,
-    images: [{ url: site.ogImage, width: 1200, height: 630, alt: 'IDMAX Logo Expert' }],
+    images: [
+  {
+    url: 'https://www.idmax.vn/assets/images/og-image.png',
+    width: 1200,
+    height: 630,
+    alt: 'IDMAX Logo Expert',
+  },
+],
     locale: 'vi_VN',
     type: 'website',
   },
