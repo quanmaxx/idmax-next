@@ -1,3 +1,4 @@
+import { BackToTopButton } from '@/components/BackToTopButton';
 import Script from 'next/script';
 import type { Metadata, Viewport } from 'next';
 import { Header } from '@/components/Header';
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Header />
         <PageTransition>{children}</PageTransition>
         <Footer />
+        <BackToTopButton />
         <Script
   src="https://www.googletagmanager.com/gtag/js?id=G-6T51V85NEN"
   strategy="afterInteractive"
