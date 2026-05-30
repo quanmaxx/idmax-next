@@ -1,6 +1,6 @@
+local_backend: false
 backend:
-  name: github
-  repo: quanmax/idmax-next
+  name: git-gateway
   branch: main
 
 media_folder: "public/uploads"
