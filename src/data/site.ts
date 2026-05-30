@@ -1,7 +1,7 @@
 export const site = {
   name: 'IDMAX',
   title: 'IDMAX — Logo Expert',
-  description: 'IDMAX là studio thiết kế logo chuyên sâu cho các thương hiệu muốn trở nên rõ ràng, khác biệt và có tính biểu tượng.',
+  description: 'IDMAX là agency thiết kế logo chuyên sâu cho các thương hiệu muốn trở nên rõ ràng, khác biệt và có tính biểu tượng.',
   url: 'https://idmax.vn',
   ogImage: '/assets/images/projects/tuart-wedding-thumb.webp',
   address: ['70 Market Str, Sunrise G, The Manor Central Park', 'Nguyễn Xiển, Hoàng Mai, Hà Nội'],
