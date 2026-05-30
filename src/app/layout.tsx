@@ -54,7 +54,27 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <PageTransition>{children}</PageTransition>
         <Footer />
         <BackToTopButton />
-        <Script
+
+<Script
+  src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+  strategy="afterInteractive"
+/>
+
+<Script id="netlify-identity-redirect" strategy="afterInteractive">
+  {`
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function(user) {
+        if (!user) {
+          window.netlifyIdentity.on("login", function() {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  `}
+</Script>
+
+<Script
   src="https://www.googletagmanager.com/gtag/js?id=G-6T51V85NEN"
   strategy="afterInteractive"
 />
