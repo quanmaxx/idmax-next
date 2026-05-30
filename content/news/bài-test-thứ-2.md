@@ -1,6 +1,6 @@
 ---
 title: bài test thứ 2
-slug: bài test thứ 2
+slug: bài-test-thứ-2
 date: 2026-05-30T23:55:00.000+07:00
 category: Logo
 thumbnail: /uploads/asset-4-6x-8.png
