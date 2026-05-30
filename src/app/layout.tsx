@@ -11,26 +11,25 @@ export const metadata: Metadata = {
   title: {
     default: site.title,
     template: '%s — IDMAX',
-     description: 'IDMAX Logo Expert',
-     icons: {
-    icon: '/favicon.ico',
-  },
   },
   description: site.description,
+  icons: {
+    icon: '/favicon.ico',
+  },
   alternates: { canonical: '/' },
   openGraph: {
     title: site.title,
     description: site.description,
     url: site.url,
     siteName: site.name,
-    images: [{ url: site.ogImage, width: 1448, height: 1354, alt: 'IDMAX project showcase' }],
+    images: [{ url: site.ogImage, width: 1200, height: 630, alt: 'IDMAX Logo Expert' }],
     locale: 'vi_VN',
-    type: 'website'
+    type: 'website',
   },
   robots: {
     index: true,
-    follow: true
-  }
+    follow: true,
+  },
 };
 
 export const viewport: Viewport = {
